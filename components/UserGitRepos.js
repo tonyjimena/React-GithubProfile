@@ -6,7 +6,7 @@ export default function UserGitRepos() {
   const context = useContext(ProfileContext);
 
   return (
-    <>
+    <div>
       <h4>Repositories</h4>
       <ul className="repo-list">
         {context.repos.length > 0 ? (
@@ -25,6 +25,6 @@ export default function UserGitRepos() {
           <p>Loading</p>
         )}
       </ul>
-    </>
+    </div>
   );
 }

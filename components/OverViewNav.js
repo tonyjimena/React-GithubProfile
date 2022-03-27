@@ -1,14 +1,12 @@
 import React from 'react';
 
-import { Link, Route, useRoute } from 'wouter';
-import { Transition } from 'react-transition-group';
+import { Link, Route, useRoute, Switch } from 'wouter';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import UserGitRepos from './UserGitRepos';
 import UserOverview from './UserOverview';
 
 export default function OverViewNav() {
-  const [match, params] = useRoute('/repositories');
-
   return (
     <>
       <div className="overview-navigation">
@@ -21,17 +19,14 @@ export default function OverViewNav() {
         </Link>
       </div>
 
-      <Route path="/" component={UserOverview} />
-
-      <Transition
-        transitionName="example"
-        transitionAppear={true}
-        transitionAppearTimeout={500}
-        transitionEnter={false}
-        transitionLeave={false}
-      >
-        <Route path="/repositories" component={UserGitRepos} />
-      </Transition>
+      <TransitionGroup>
+        <CSSTransition timeout={500} classNames="slides">
+          <Switch>
+            <Route exact path="/" component={UserOverview} />
+            <Route path="/repositories" component={UserGitRepos} />
+          </Switch>
+        </CSSTransition>
+      </TransitionGroup>
     </>
   );
 }
