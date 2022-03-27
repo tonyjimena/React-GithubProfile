@@ -9,7 +9,7 @@ export default function UserGitRepos() {
     <>
       <h3>User github repositories</h3>
       <ul className="repo-list">
-        {/* {context.repos.length ? (
+        {context.repos.length ? (
           context.repos.map((el) => {
             return (
               <li className="repo-item" key={el.id}>
@@ -19,7 +19,7 @@ export default function UserGitRepos() {
           })
         ) : (
           <p>Loading</p>
-        )} */}
+        )}
       </ul>
     </>
   );

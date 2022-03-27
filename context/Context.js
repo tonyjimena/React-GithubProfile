@@ -5,34 +5,36 @@ import { getUserInfo, getRepos } from '../services/githubApi';
 const ProfileContext = React.createContext();
 
 function ProfileProvider(props) {
-  let userInformation = {
+  const gitProfileInfo = {
     company: 'React',
     companyImage:
       'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png',
     url: 'https://github.com/tonyjimena',
-    userImage: '',
-    userName: '',
-    fullName: '',
-    team: '',
-    repos: [''],
+    avatar_url: 'https://avatars.githubusercontent.com/u/59872884?v=4',
+    name: 'name',
+    bio: 'bio',
+    following: '11',
+    followers: '5',
+    created_at: 'created at',
+    repos_url: '',
+    repos: '',
     changeData: (property, value) => {
-      setUserInfo({ ...userInfo, [property]: value });
+      setUserInfo((userInfo) => {
+        return { ...userInfo, [property]: value };
+      });
     },
   };
 
-  const [userInfo, setUserInfo] = useState(userInformation);
+  const [userInfo, setUserInfo] = useState(gitProfileInfo);
 
-  // const { profile, repositories } = useGithub({});
+  const { profile, repositories } = useGithub({});
 
   useEffect(() => {
-    getUserInfo().then((res) => {
-      console.log(res);
+    setUserInfo((userInfo) => {
+      return { ...userInfo, ...profile, repos: repositories };
     });
-
-    getRepos().then((res) => {
-      userInformation.changeData('repos', res);
-    });
-  }, []);
+    console.log(userInfo);
+  }, [profile, repositories]);
 
   return (
     <ProfileContext.Provider value={userInfo}>

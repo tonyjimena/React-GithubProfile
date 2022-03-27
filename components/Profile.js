@@ -7,9 +7,14 @@ export default function Profile() {
   const context = useContext(ProfileContext);
 
   return (
-    <div className="profile">
-      <img width="50" src={context.companyImage} />
-      <User />
-    </div>
+    <>
+      <div className="header">
+        <img width="40" src={context.companyImage} />
+      </div>
+
+      <div className="profile">
+        <User />
+      </div>
+    </>
   );
 }
