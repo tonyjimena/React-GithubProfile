@@ -7,13 +7,17 @@ export default function UserGitRepos() {
 
   return (
     <>
-      <h3>User github repositories</h3>
+      <h4>Repositories</h4>
       <ul className="repo-list">
-        {context.repos.length ? (
+        {context.repos.length > 0 ? (
           context.repos.map((el) => {
             return (
               <li className="repo-item" key={el.id}>
-                <a href={el.url}>{el.name}</a>
+                <h4>
+                  <a className="accent" href={el.url}>
+                    {el.name}
+                  </a>
+                </h4>
               </li>
             );
           })

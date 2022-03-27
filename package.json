@@ -6,7 +6,8 @@
     "https:": "*",
     "null": "2.0.0",
     "react": "16.7.0-alpha.2",
-    "react-dom": "16.7.0-alpha.2"
+    "react-dom": "16.7.0-alpha.2",
+    "wouter": "^2.7.5"
   },
   "scripts": {
     "start": "react-scripts start",

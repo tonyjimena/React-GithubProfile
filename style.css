@@ -18,6 +18,10 @@ body {
   margin-bottom: 1rem;
 }
 
+h4 {
+  font-weight: 500;
+  font-size: 18px;
+}
 .profile-name {
   font-size: 26px;
   line-height: 1.25;
@@ -80,14 +84,24 @@ img:hover {
   list-style: none;
   padding: 0.5rem;
   margin: 0.5rem;
-  border-radius: 5px;
-  background: #105e5e;
   max-width: 250px;
+  border-top: 3px;
+  border-top-style: solid;
+  border-color: #21262d;
 }
 .follows-container {
   display: flex;
   gap: 0.5rem;
 }
+
+.repo-list a.accent {
+  color: #58a6ff;
+}
+.repo-list a.accent:hover {
+  text-decoration: underline;
+  color: #58a6ff;
+}
+
 a {
   text-decoration: none;
   color: #f0f6fc;

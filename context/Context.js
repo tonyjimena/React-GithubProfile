@@ -17,7 +17,9 @@ function ProfileProvider(props) {
     followers: '5',
     created_at: 'created at',
     repos_url: '',
-    repos: '',
+    repos: [
+      { id: 1, name: 'React-GithubProfile-UseContext-example', url: '/' },
+    ],
     changeData: (property, value) => {
       setUserInfo((userInfo) => {
         return { ...userInfo, [property]: value };
@@ -27,11 +29,15 @@ function ProfileProvider(props) {
 
   const [userInfo, setUserInfo] = useState(gitProfileInfo);
 
-  const { profile, repositories } = useGithub({});
+  const { profile, repositories } = useGithub(gitProfileInfo);
 
   useEffect(() => {
     setUserInfo((userInfo) => {
-      return { ...userInfo, ...profile, repos: repositories };
+      return {
+        ...userInfo,
+        ...profile,
+        repos: [...userInfo.repos, ...repositories],
+      };
     });
     console.log(userInfo);
   }, [profile, repositories]);

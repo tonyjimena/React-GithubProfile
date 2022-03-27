@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { ProfileContext } from '../context/Context';
 import Follows from './Follows';
 // import ChangeTeam from './ChangeTeam';
-import UserGitRepos from './UserGitRepos';
+import OverViewNav from './OverViewNav';
 
 export default function User() {
   const context = useContext(ProfileContext);
@@ -13,21 +13,15 @@ export default function User() {
         <a href={context.url}>
           <img src={context.avatar_url} width="77" />
         </a>
-        <h1 className="profile-name">{context.name}</h1>
-        <h2 className="profile-bio">{context.bio}</h2>
+        <h2 className="profile-name">{context.name}</h2>
+        <p className="profile-bio">{context.bio}</p>
       </div>
-      <Follows/>
-      <p className="profile-bio">
-        Active since: {context.created_at.split('T')[0]}
-      </p>
+      <Follows />
+      <span className="profile-bio">
+        Since: {context.created_at.split('T')[0]}
+      </span>
       <p className="profile-bio">{context.company}</p>
-      <button
-        className="profile-button"
-        onClick={() => context.changeData('company', 'TonyReact')}
-      >
-        Change company
-      </button>
-      <UserGitRepos />
+      <OverViewNav />
     </div>
   );
 }
