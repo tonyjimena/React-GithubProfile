@@ -1,0 +1,79 @@
+body {
+  background-color: #1b3434;
+}
+h1,
+h3,
+p {
+  font-family: Lato;
+}
+h1.profile-userName {
+  margin: 0;
+  font-size: 2.5em;
+  color: #53effa;
+}
+
+h3 {
+  color: #53effa;
+}
+p.profile-fullName {
+  margin-top: 0;
+  font-size: 1em;
+  color: #fff;
+  font-weight: lighter;
+}
+p.profile-team {
+  margin-top: 0;
+  font-size: 1.5em;
+  color: rgb(151, 243, 255, 0.9);
+  font-weight: lighter;
+}
+button.profile-button {
+  cursor: pointer;
+  margin-right: 0.25em;
+  padding: 0.5em;
+  border: none;
+  border-radius: 4px;
+  background-color: rgba(151, 243, 255, 0.9);
+  color: rgb(8, 44, 54);
+}
+button.profile-button:hover {
+  background-color: rgba(151, 243, 255, 0.7);
+  color: rgba(8, 44, 54, 0.616);
+}
+img:hover {
+  opacity: 0.5;
+  filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+.repo-list {
+  padding: 0;
+  margin: 0;
+}
+.repo-item {
+  list-style: none;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 5px;
+  background: #105e5e;
+  max-width: 250px;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Toggle Outlines */
+/* .profile {
+  border: 2px solid hotpink;
+  padding: 0.25em;
+}
+.user {
+  margin: 2px;
+  border: 2px solid white;
+  padding: 0.25em;
+}
+.team {
+  margin: 2px;
+  border: 2px solid orange;
+  padding: 0.25em;
+} */
