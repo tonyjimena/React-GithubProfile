@@ -102,6 +102,22 @@ img:hover {
   color: #58a6ff;
 }
 
+.overview-navigation {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  height: 30px;
+}
+
+.overview-navigation a {
+  padding-bottom: 0.5rem;
+}
+
+.overview-navigation a:hover {
+  border-bottom: 2px;
+  border-bottom-style: solid;
+}
+
 a {
   text-decoration: none;
   color: #f0f6fc;
@@ -109,4 +125,22 @@ a {
 
 a:hover {
   color: #a0a0a0;
+}
+
+.example-enter {
+  opacity: 0.01;
+}
+
+.example-enter.example-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.example-leave {
+  opacity: 1;
+}
+
+.example-leave.example-leave-active {
+  opacity: 0.01;
+  transition: opacity 300ms ease-in;
 }
