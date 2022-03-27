@@ -1,4 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { useGithub } from '../hooks/useGithub';
+import { getUserInfo, getRepos } from '../services/githubApi';
+
 const ProfileContext = React.createContext();
 
 function ProfileProvider(props) {
@@ -11,7 +14,7 @@ function ProfileProvider(props) {
     userName: '',
     fullName: '',
     team: '',
-    repos: [],
+    repos: [''],
     changeData: (property, value) => {
       setUserInfo({ ...userInfo, [property]: value });
     },
@@ -19,33 +22,17 @@ function ProfileProvider(props) {
 
   const [userInfo, setUserInfo] = useState(userInformation);
 
+  // const { profile, repositories } = useGithub({});
+
   useEffect(() => {
-    if (userInformation.userName == '') {
-      getUserInfo();
-      console.log(userInfo);
-    }
+    getUserInfo().then((res) => {
+      console.log(res);
+    });
+
+    getRepos().then((res) => {
+      userInformation.changeData('repos', res);
+    });
   }, []);
-
-  function getRepos() {
-    fetch('https://api.github.com/users/tonyjimena/repos')
-      .then((res) => res.json())
-      .then((res) => {
-        userInformation.repos = res;
-        setUserInfo(userInformation);
-      })
-      .catch((e) => {});
-  }
-
-  function getUserInfo() {
-    fetch('https://api.github.com/users/tonyjimena')
-      .then((res) => res.json())
-      .then((res) => {
-        userInformation.userName = res.login;
-        userInformation.userImage = res.avatar_url;
-        getRepos();
-      })
-      .catch((e) => {});
-  }
 
   return (
     <ProfileContext.Provider value={userInfo}>
